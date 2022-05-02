@@ -45,11 +45,6 @@ after finding minimum in left swap them
 20 30 40 50 60 70 80 90 10 00
 
 (loop increase by 1)
-compare 20 with it's every left elements 30 40 50 60 70 80 90
-after finding minimum in left swap them
-20 30 40 50 60 70 80 90 10 00
-
-(loop increase by 1)
 compare 10 with it's every left elements 20 30 40 50 60 70 80 90
 after finding minimum in left swap them
 10 20 30 40 50 60 70 80 90 00

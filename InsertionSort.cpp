@@ -53,6 +53,11 @@ after finding minimum in left swap them
 compare 10 with it's every left elements 10 20 30 40 50 60 70 80 90
 after finding minimum in left swap them
 00 10 20 30 40 50 60 70 80 90
+
+Time Complexity:-
+Best: O(n^2)
+Average: O(n^2)
+Worst: O(n^2)
 */
 
 void swap_(int *x, int *y)

@@ -44,7 +44,7 @@ void selectionSort(int arr[], int size_)
 {
     for(int i=0; i<size_; i++)
     {
-        for(int j=i+1; j<size_; j++) //loop starting one after element we take in previous loop.
+        for(int j=i+1; j<size_ - 1; j++) //loop starting one after element we take in previous loop.
         {
             if(arr[i] > arr[j]) //not only the first but every element is comparing with arr[i] and swaping with smaller values then its..
             {

@@ -27,7 +27,7 @@ now merge subarrays {32, 93} an {11, 55}
 now merge subarrays {11, 32, 55, 93} and {2}
 {2, 11, 32, 55, 93}
 
-NOTE: for better viualization how array breaks in subarrays see the image [https://user-images.githubusercontent.com/100432854/166328277-4ca0c711-11d5-4020-912b-88de3a711d2c.png]
+NOTE: for better viualization how array breaks in subarrays see the image ![Merge-Sort-Tutorial](https://user-images.githubusercontent.com/100432854/166328277-4ca0c711-11d5-4020-912b-88de3a711d2c.png)
 
 major drawback - Slower comparative to the other sort algorithms for smaller tasks.
 

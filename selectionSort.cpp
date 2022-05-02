@@ -34,7 +34,7 @@ Worst: O(n^2)
 
 it has same complexity for trios case because loop is repeatedly moving and checking every element
 */
-void swap_(int *x, int *y)
+void swap_(int *x, int *y) //swaping elements
 {
     int temp=*x;
     *x = *y;
@@ -44,11 +44,11 @@ void selectionSort(int arr[], int size_)
 {
     for(int i=0; i<size_; i++)
     {
-        for(int j=i+1; j<size_; j++)
+        for(int j=i+1; j<size_; j++) //loop starting one after element we take in previous loop.
         {
-            if(arr[i] > arr[j])
+            if(arr[i] > arr[j]) //not only the first but every element is comparing with arr[i] and swaping with smaller values then its..
             {
-                swap_(&arr[i], &arr[j]);
+                swap_(&arr[i], &arr[j]); 
             }
         }
     }
@@ -58,9 +58,10 @@ int main()
     int size_;
     cout<<"Enter array size: ";
     cin>>size_;
+    
     int arr[size_];
     cout<<"Enter elements: "<<endl;
-    for(int i=0; i<size_; i++)
+    for(int i=0; i<size_; i++) // take input as unsorted array
     {
         cin>>arr[i];
     }
@@ -68,7 +69,7 @@ int main()
     selectionSort(arr, size_);
 
     cout<<"Array after selection sort: ";
-    for(int i=0; i<size_; i++)
+    for(int i=0; i<size_; i++) //display sorted array
     {
         cout<<arr[i]<<" ";
     }

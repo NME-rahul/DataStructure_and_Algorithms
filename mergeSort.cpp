@@ -27,6 +27,8 @@ now merge subarrays {32, 93} an {11, 55}
 now merge subarrays {11, 32, 55, 93} and {2}
 {2, 11, 32, 55, 93}
 
+NOTE: for better viualization how array breaks i subarrays see the image 
+
 major drawback - Slower comparative to the other sort algorithms for smaller tasks.
 
 Time Complexity:-

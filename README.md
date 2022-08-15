@@ -1,4 +1,5 @@
 <details>
+ 
 * Downloaded the data from [Deep Blue Data](https://doi.org/10.7302/Z23R0R29).
  
 * Removed all blurrry or distorted images.

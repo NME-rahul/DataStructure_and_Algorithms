@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 10
+struct node
+{
+    int data;
+    struct node *next;
+};
+void printlist(struct node *);
+void printlist(struct node *head)
+{
+    while(head!=NULL)
+    {
+        head=head->next;
+        printf("%d\n",head->data);
+    }
+}
+int main()
+{
+    struct node *head=NULL;
+    struct node *second[MAX];
+    for(int i=0;i<MAX;i++)
+    {
+        second[i]=NULL;
+    }
+    //struct node *third=NULL;
+        head=(struct node *)malloc(sizeof(struct node));
+        for(int i=0;i<MAX;i++)
+        {
+            second[i]=(struct node *)malloc(sizeof(struct node));
+        }
+        //third=(struct node *)malloc(sizeof(struct node));
+        //head->data=1;
+        head->next=second[0];
+
+        /*second->data=2;
+        second->next=third;
+
+        third->data=3;
+        third->next=NULL;*/
+        printf("Enter data : \n");
+        for(int i=1;i<=MAX;i++)
+        {
+            scanf("%d",&second[i-1]->data);
+            second[i-1]->next=second[i];
+        }
+        second[9]->next=NULL;
+            printlist(head);
+    return 0;
+}

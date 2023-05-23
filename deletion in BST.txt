@@ -1,0 +1,19 @@
+There are three sitauation of deleting a node from binary search tree
+
+1. the node to be deleted is a leaf node
+		
+		
+		
+								50
+						25				75
+					12		30		60		85
+								  52  70
+								  
+deleting 85 from tree and assigen parent node of its right/left to null
+
+2. the node to be delete has only one child
+in this case replace the node with its child and delete the child node and assigen to left/right to null
+
+3. the node to be deleted has two children
+the node which is to be deleted is replace with its in-order succesor or predecessor recursively until the node value is placed on the leaf of the tree after the procedure replace the node with null
+

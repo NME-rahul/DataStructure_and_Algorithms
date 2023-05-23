@@ -1,0 +1,62 @@
+#include<stdio.h>
+
+int info[10]={656,122,233,100,555,788,854};  //link_border==info_border
+int link1[10]={8,0,2,9,6,5,-1};
+int avail[10]={3,7,1};
+int ptr=4,avail_ptr=3,link_border=7;
+int main()
+{
+    int i,j,item,loc;
+    printf("Enter location : ");
+    scanf("%d",&loc);
+    if(avail_ptr==0)
+    {
+        printf("Array is in overflow\n\n");
+    }
+    else if(ptr==-1)
+    {
+        printf("Array is in underflow\n\n");
+    }
+    else
+    {
+        for(i=0;i<avail_ptr;i++)
+        {
+            if(loc==avail[i])
+            {
+                printf("Enter item : ");
+                scanf("%d",&item);
+                for(j=0;j<avail_ptr;j++)
+                {
+                    avail[i+1]=avail[i];
+                    avail_ptr=avail_ptr-1;
+                }
+                if(link_border==loc)
+                {
+                    link1[link_border-1]=loc;
+                    info[link_border]=item;
+                    link_border=link_border+1;
+                }
+                else
+                {
+                    link1[link_border]=loc;
+                    info[link_border]=item;
+                    link_border=link_border+1;
+                }
+                break;
+            }
+        }
+        if(i==avail_ptr)
+        {
+            printf("Entered location is not available :(\n\n");
+            goto end;
+        }
+    }
+    printf("array after insertion : \n");
+    for(i=0;i<link_border;i++)
+    {
+        printf("%d\n",info[i]);
+    }
+end:
+    return 0;
+}
+

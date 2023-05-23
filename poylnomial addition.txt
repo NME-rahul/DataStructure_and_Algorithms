@@ -1,0 +1,167 @@
+/*program of addition of polynomial equations*/
+#include<stdio.h>
+#include<stdlib.h>
+struct PolyNom
+{
+    int coeff;
+    short int expo;
+    char var;
+    struct PolyNom *next;
+};
+struct PolyNom *newNode(struct PolyNom *node, char var, short int expo, int coeff)
+{
+    struct PolyNom *temp = (struct PolyNom*)malloc(sizeof(struct PolyNom));
+    temp->var = var;
+    temp->expo = expo;
+    temp->coeff = coeff;
+    temp->next = NULL;
+    return temp;
+}
+struct PolyNom *insert(struct PolyNom *node, char var, short int expo, int coeff)
+{
+    if(node==NULL)
+    {
+        newNode(node, var, expo, coeff);
+    }
+    else
+    {
+        insert(node->next, var, expo, coeff);
+    }
+    return node;
+}
+void traverse(struct PolyNom *node)
+{
+    if(node==NULL)
+        return;
+    printf("%d%c%hu + ", node->coeff, node->var, node->expo);
+    traverse(node->next);
+}
+struct PolyNom *createNode(struct PolyNom *q)
+{
+    struct PolyNom *temp = (struct PolyNom*)malloc(sizeof(struct PolyNom));
+    temp->expo = q->expo;
+    temp->var = q->var;
+    temp->coeff = q->coeff;
+    return temp;
+}
+struct PolyNom *append(struct PolyNom *p, struct PolyNom *q)
+{
+    if(q==NULL)
+    {
+        return createNode(q);
+    }
+    else
+    {
+        append(p, q->next);
+    }
+    return q;
+}
+void add(struct PolyNom *node1, struct PolyNom *node2, struct PolyNom *node3)
+{
+    while(node1!=NULL || node2!=NULL)
+    {
+        while(node1->expo > node2->expo)
+        {
+            node3 = (struct PolyNom*)malloc(sizeof(struct PolyNom));
+            node3->coeff = node1->coeff;
+            node3->var = node1->var;
+            node3->expo = node1->expo;
+            //node3 = append(node1, node3);
+            node1 = node1->next;
+            node3 = node3->next;
+        }
+        while(node1->expo < node2->expo)
+        {
+            node3 = (struct PolyNom*)malloc(sizeof(struct PolyNom));
+            node3->coeff = node2->coeff;
+            node3->var = node2->var;
+            node3->expo = node2->expo;
+            //node3 = append(node1, node3);
+            node2 = node2->next;
+            node3 = node3->next;
+        }
+        while(node1->expo == node2->expo)
+        {
+            node3 = (struct PolyNom*)malloc(sizeof(struct PolyNom));
+            node3->coeff = node2->coeff + node1->coeff;
+            node3->var = node1->var;
+            node3->expo = node1->expo;
+            node1 = node1->next;
+            node2 = node2->next;
+            node3 = node3->next;
+        }
+        while(node1!=NULL)
+        {
+            node3 = (struct PolyNom*)malloc(sizeof(struct PolyNom));
+            node3->coeff = node1->coeff;
+            node3->var = node1->var;
+            node3->expo = node1->expo;
+            //append(node1, node3);
+            node1 = node1->next;
+            node3 = node3->next;
+        }
+        while(node2!=NULL)
+        {
+            node3 = (struct PolyNom*)malloc(sizeof(struct PolyNom));
+            node3->coeff = node2->coeff;
+            node3->var = node2->var;
+            node3->expo = node2->expo;
+            //append(node1, node3);
+            node1 = node2->next;
+            node3->next = NULL;
+        }
+    }
+}
+void input(short int no);
+int main()
+{
+    struct PolyNom *p1=NULL, *p2=NULL, *p3=NULL;
+    
+    /*char add;
+    do
+    {
+        scanf("%c",&add);
+        input(add);
+    }while(add=='+');
+ */
+    
+    short int order;
+    char varType;
+    printf("Enter equation 1\n");
+    printf("Enter order of equation and variable: ");
+    scanf("%hu%c",&order,&varType);
+    
+    short int exponent;
+    int coefficient;
+    
+    char sign;
+    do
+    //for(short int i=0; i<order; i++)
+    {
+        printf("Enter exponent and coefficient: ");
+        scanf("%hu%d",&exponent,&coefficient);
+        p1 = insert(p1, varType, exponent, coefficient);
+        scanf("%c",&sign);
+    }while(sign=='+');
+    
+    printf("\nEnter equation 2\n");
+    printf("Enter order of equation and variable: ");
+    scanf("%hu%c",&order,&varType);
+    do
+    //for(short int i=0; i<order; i++)
+    {
+        printf("Enter exponent and coefficient: ");
+        scanf("%hu%d",&exponent,&coefficient);
+        p2 = insert(p2, varType, exponent, coefficient);
+        scanf("%c",&sign);
+    }while(sign=='+');
+    
+    traverse(p1);
+    traverse(p2);
+    
+    add(p1, p2, p3);
+    
+    printf("addition: ");
+    traverse(p3);
+    return 0;
+}

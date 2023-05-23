@@ -1,0 +1,26 @@
+ // Complexity = O(n^2) for both worst and average case
+#include<stdio.h>
+#define MAX 11
+int a[MAX]={-1,55,66,9,8,7,41,23,69,33,22},i;
+int main()
+{
+    int temp=0,j;
+    for(i=1;i<MAX;i++)
+    {
+        for(j=i+1;j>0;j--)
+        {
+            if(a[j]<a[j-1])
+            {
+                temp=a[j-1];
+                a[j-1]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+    printf("Array after sorting : \n");
+    for(i=1;i<MAX;i++)
+    {
+        printf("%d\n",a[i]);
+    }
+    return 0;
+}

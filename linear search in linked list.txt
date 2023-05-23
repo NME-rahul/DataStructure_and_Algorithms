@@ -1,0 +1,31 @@
+#include<stdio.h>
+int info[10]={22,34,67,89,11,56,79,10,90,47};
+int link1[11]={1,7,8,-1,2,3,9,4,6,5};  // if item and pointer has same location then it will never able to find item
+int ptr=0;
+int main()
+{
+    int item,loc=-1;
+    printf("Enter item : ");
+    scanf("%d",&item);
+    while(ptr!=-1)
+    {
+        if(item==info[ptr])
+        {
+            loc=ptr;
+            break;
+        }
+        else
+        {
+            ptr=link1[ptr];
+        }
+    }
+    if(loc==-1)
+    {
+        printf("Item not present in array\n\n");
+    }
+    else
+    {
+        printf("\nLOC : %d\n\n",loc);
+    }
+    return 0;
+}

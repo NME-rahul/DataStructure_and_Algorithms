@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next; //this a next pointer which is declared inside struct(points to next location of data)
+};
+int  main()
+{
+    struct node *head = NULL; //we declaring a pointer variable and assigning it to null value(pointing to null memory)
+    struct node *second =NULL;
+    struct node *third = NULL;
+
+    /* struct node *head = malloc(sizeof(struct node));    //struct node *head is creating a new pointer to struct node
+    struct node *second= malloc(sizeof(struct node));  //struct node *head = malloc(sizeof( struct node)) it means we are allocating memory to head as the size of struct node
+    struct node *third = malloc(sizeof(struct node)); */
+
+    head=(struct node *)malloc(sizeof(struct node));
+    second=(struct node *)malloc(sizeof(struct node));
+    third=(struct node *)malloc(sizeof(struct node));  //by this mean malloc() function return a void pointer according to size of struct node that is type casted into struct *node and assigning to head pointer variable
+
+    head->data=1;
+    head->next=second;
+    second->data=2;
+    second->next=third;
+
+    third->data=3;
+    third->next=NULL;
+    return 0;
+}

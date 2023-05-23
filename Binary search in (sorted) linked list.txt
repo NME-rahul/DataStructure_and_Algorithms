@@ -1,0 +1,76 @@
+#include<stdio.h>
+int info[10]={100,145,223,344,424,547,677,897,899,900};  //sorted Data(necessary for binary search)
+int link1[10]={1,2,3,4,5,6,7,8,9,-1}; //In sorted linked searching pointer also should no be have address that point the data behind
+int ptr=0,loc=-1,item;
+int main()
+{
+    printf("Enter Item : ");
+    scanf("%d",&item);
+    while(ptr!=-1)
+    {
+        if(item==info[ptr])
+        {
+            loc=ptr;
+            break;
+        }
+        else
+        {
+            ptr=link1[ptr];
+        }
+    }
+    if(loc==-1)
+    {
+        printf("Item not found :(\n\n");
+    }
+    else
+    {
+        printf("LOC : %d\n\n",loc);
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*#include<stdio.h>
+int info[10]={100,145,223,344,424,547,677,897,899,900};  //sorted Data
+int link1[10]={1,2,3,4,5,6,7,8,9,-1}; //In sorted linked searching pointer also should no be have address that point the data behind
+int ptr=0,loc=-1,item;
+int main()
+{
+    printf("Enter Item : ");
+    scanf("%d",&item);
+    while(ptr!=-1)
+    {
+        if(item>info[ptr])
+        {
+            ptr=link1[ptr];
+        }
+        else if(item==info[ptr])
+        {
+            loc=ptr;
+            break;
+        }
+        else
+        {
+            break;
+        }
+    }
+    if(loc==-1)
+    {
+        printf("Item not found :(\n\n");
+    }
+    else
+    {
+        printf("LOC : %d\n\n",loc);
+    }
+    return 0;
+}*/

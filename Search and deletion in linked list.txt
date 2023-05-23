@@ -1,0 +1,37 @@
+#include<stdio.h>
+int info[10]={56,34,76,89,23,11,45,69,99,100};
+int link_[10]={4,3,5,9,2,8,7,1,6,-1};
+int ptr=0,loc,locp,save;
+int main()
+{
+    int item;
+    printf("Enter item : ");
+    scanf("%d",&item);
+    while(ptr!=-1)
+    {
+        if(info[ptr]==item)
+        {
+            loc=ptr;
+            locp=save;
+            for(int i=loc;i<9;i++)
+            {
+                info[i]=info[i+1];
+            }
+            break;
+        }
+        else
+        {
+            save=ptr;
+            ptr=link_[ptr];
+        }
+    }
+    if(ptr==-1)
+    {
+        printf("\nserch unsuccessful");
+    }
+    for(int i=0;i<9;i++)
+    {
+        printf("\n%d %d",info[i],link_[i]);
+    }
+    return 0;
+}

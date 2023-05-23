@@ -1,0 +1,31 @@
+#include<stdio.h> //solution for n=2 is genaral form of tower of hanoi
+void tower(int,char [], char [], char []);
+int main()
+{
+    int n;
+    printf("Enter the number of disks to be tranferred : ");
+    scanf("%d",&n);
+    if(n<1)
+    {
+        printf("\nIncorrect value");
+    }
+    else
+    {
+        printf("\nThe following moves are required for N = %d\n\n",n);
+        tower(n,"BEG","AUX","END");
+    }
+    printf("\n\nReturn to main function\n");
+    return 0;
+}
+void tower(int num, char a[], char b[], char c[])
+{
+    if(num==1)
+    {
+        printf("%s -> %s\t",a,c);
+        return; //function always returns, where from is called last time[function will return to tower(num-1,a,c,b);]
+    }
+    tower(num-1,a,c,b);
+    printf("%s -> %s\t",a,c);
+    tower(num-1,b,a,c);
+    return;
+}

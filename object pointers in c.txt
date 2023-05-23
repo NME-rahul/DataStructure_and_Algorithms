@@ -1,0 +1,21 @@
+objects are variable user define datatype . we can store value in them
+struct node
+{
+	int data;
+	struct node *next
+};
+int main()
+{
+	struct node *root=NULL;
+	struct node *link[10];
+	root=(struct node*)malloc(sizzeof(sttruct node));//typecasting in necessary when we are storing values and taking their addrss in pointer 
+	for(int i=0;i<10;i++)
+	{
+		link[i]=NULL;
+		link[i]=(struct node *)malloc(sizeof(struct node));
+	}
+	for(int i=0;i<10;i++)
+	{
+		scanf("%d",&link[i]->data); //for this typecasting is necessary specialy for when we working with pointers. by this we are storing  data and their coresponding address in link[i]
+	}
+}

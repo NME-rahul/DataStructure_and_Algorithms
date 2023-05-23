@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 10
+struct node
+{
+    int info;
+    struct node *next_r,*next_l;
+};
+void printlist_r(struct node *);
+void printlist_l(struct node *);
+void printlist_r(struct node *root)
+{
+    printf("\nRight traversal in tree\n");
+    while(root!=NULL)
+    {
+        printf("%d\n",root->info);
+        root=root->next_r;
+    }
+}
+void printlist_l(struct node *root)
+{
+    printf("\nLeft traversal in tree\n");
+    while(root!=NULL)
+    {
+        printf("%d\n",root->info);
+        root=root->next_l;
+    }
+}
+int main()
+{
+    int i;
+    struct node *root=NULL;
+    struct node *link[10];
+    root=(struct node*)malloc(sizeof(struct node));
+    for(i=0;i<MAX;i++)
+    {
+        link[i]=NULL;
+        link[i]=(struct node*)malloc(sizeof(struct node));
+    }
+    root->info=1;
+    root->next_r=link[0];
+    root->next_l=link[6];
+    printf("Enter data : \n");
+    for(i=0;i<10;i++)
+    {
+        scanf("%d",&link[i]->info);
+    }
+    for(i=0;i<5;i++)
+    {
+        link[i]->next_r=link[i+1];
+    }
+    link[5]->next_r=NULL;
+    for(i=6;i<MAX-1;i++)
+    {
+        link[i]->next_l=link[i+1];
+    }
+    link[9]->next_l=NULL;
+    printlist_r(root);
+    printlist_l(root);
+    return 0;
+}
+
+

@@ -1,0 +1,27 @@
+#include<stdio.h>
+int fibonacci(int ,int ,int );
+int main()
+{
+    int a,b,length;
+    printf("Enter first two elements: ");
+    scanf("%d%d",&a,&b);
+    printf("Enter length(in elements): ");
+    scanf("%d",&length);
+    fibonacci(a,b,length);
+    return 0;
+}
+int fibonacci(int a,int b,int length)
+{
+    int result;
+    if(length!=0)
+    {
+        result = a + b;
+        length = length -1;
+        printf("%d ",result);
+        return(fibonacci(b,result,length));
+    }
+    else
+    {
+        return 0;
+    }
+}

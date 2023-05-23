@@ -1,0 +1,95 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct BST
+{
+    int key;
+    struct BST *right, *left;
+};
+struct BST *newNode(int item)
+{
+    struct BST *temp = (struct BST *)malloc(sizeof(struct BST));
+    temp->key = item;
+    temp->left = temp->right = NULL;
+    return temp;
+}
+void inorder(struct BST *node)
+{
+    if(node!=NULL)
+    {
+        inorder(node->left);
+        printf("%d ", node->key);
+        inorder(node->right);
+    }
+}
+struct BST *insert(struct BST *node, int key)
+{
+    if(node==NULL)
+    {
+        return newNode(key);
+    }
+    
+    if(node->key > key)
+    {
+        node->left = insert(node->left, key);
+        return newNode(key);
+    }
+    else if(node->key < key)
+    {
+        node->right = insert(node->right, key);
+        return newNode(key);
+    }    return node;
+}
+struct BST *minValueNode(struct BST *node)
+{
+    struct BST *current = node;
+    while(current && current->left!=NULL)
+    {
+        current = current->left;
+    }
+    return node;
+}
+struct BST *deleteNode(struct BST *node, int item)
+{
+    if(node==NULL)
+    {
+        return node;
+    }
+    //check for item
+    if(node->key < item)
+    {
+        node->right = deleteNode(node->right, item);
+    }
+    else if(node->key > item)
+    {
+        node->left = deleteNode(node->left, item);
+    }
+    else
+    {
+        //one child condition
+        if(node->left == NULL)
+        {
+            struct BST *temp = node->right;
+            free(temp);
+        }
+        if(node->right == NULL)
+        {
+            struct BST *temp = node->left;
+            free(temp);
+        }
+        //two child condition
+        struct BST *temp = minValueNode(node);
+        
+        node->key = temp->key; //coping inorder successor of given node find by minValueNode() function
+        
+        //inorder successor of a node can also have one or more child
+        node->right = deleteNode(node->right, temp->key);
+    }
+    return node;
+}
+int main()
+{
+    struct BST *root = NULL;
+    insert(root, 23);
+    root = insert(root, 14);
+    return 0;
+}

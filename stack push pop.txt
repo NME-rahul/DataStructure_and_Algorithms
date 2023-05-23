@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int a[15];
+    int opt=-1,top=-1,item;
+    printf("1. push\n2. pop\n3. display\n4. exit");
+    while(opt!=4)
+    {
+        printf("\nEnter option: ");
+        scanf("%d",&opt);
+        switch(opt)
+        {
+            case 1:
+                top=top+1;
+                printf("Enter element: ");
+                scanf("%d",&item);
+                a[top]=item;
+                break;
+            case 2:
+                item=a[top];
+                top=top-1;
+                printf("\nPoped item: %d",item);
+                break;
+            case 3:
+                for(int i=0;i<=top;i++)
+                {
+                    printf("%d ",a[i]);
+                }
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("\nInvalid input");
+        }
+    }
+    return 0;
+}

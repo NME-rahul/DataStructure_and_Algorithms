@@ -1,0 +1,101 @@
+#include<stdio.h>
+#include<stdlib.h>
+int i;
+struct node
+{
+    int data;
+    struct node *next_r;
+    struct node *next_l;
+};
+void delete_node_r(struct node *,int );
+void delete_node_l(struct node *,int );
+
+void printlist_r(struct node *);
+void printlist_l(struct node *);
+
+void delete_node_r(struct node *root,int item)
+{
+    while(root!=NULL)
+    {
+        if(item==root->data)
+        {
+            break;
+        }
+        root=root->next_r;
+    }
+    if(root==NULL)
+    {
+        printf("\nElement not found");
+    }
+}
+void delete_node_l(struct node *root,int item)
+{
+    while(root!=NULL)
+    {
+        if(item==root->data)
+        {
+            break;
+        }
+        root=root->next_l;
+    }
+    if(root==NULL)
+    {
+        printf("\nElement not found");
+    }
+}
+void printlist_r(struct node *root)
+{
+    while(root!=NULL)
+    {
+        printf("\n%d",root->data);
+        root=root->next_r;
+    }
+}
+ 
+void printlist_l(struct node *root)
+{
+    while(root!=NULL)
+    {
+        printf("\n%d",root->data);
+        root=root->next_l;
+    }
+}
+          
+int main()
+{
+    int item;
+
+    struct node *root=NULL;
+    struct node *link[10];
+    struct node *avail[];
+    root=(struct node *)malloc(sizeof(struct node));
+    for(i=0;i<10;i++)
+    {
+        link[i]=NULL;
+        link[i]=(struct node *)malloc(sizeof(struct node));
+    }
+    root->data=0;
+    root->next_r=link[0];
+    root->next_l=link[5];
+    printf("Enter data : \n");
+    for(i=0;i<=4;i++)
+    {
+        scanf("%d",&link[i]->data);
+        link[i]->next_r=link[i+1];
+    }
+    link[4]->next_r=NULL;
+    for(i=5;i<10;i++)
+    {
+        scanf("%d",&link[i]->data);
+        link[i]->next_l=link[i+1];
+    }
+    link[9]->next_l=NULL;
+    printf("Enter item to delete : ");
+    scanf("%d",&item);
+    delete_node_r(root,item);
+    delete_node_l(root,item);
+    printlist_r(root);
+    printlist_l(root);
+
+    return 0;
+}

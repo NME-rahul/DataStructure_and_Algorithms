@@ -1,0 +1,122 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void adddata(void);
+void showdata(void);
+void insert(void);
+void delete(void);
+
+int a[15]={22,45,12,78,44,67,34,99,33,11};
+int item,i,loc,j=9;
+
+void adddata()
+{
+    system("clear");
+    if(j==15)
+    {
+        printf("\nIf you enter element array will overflow");
+    }
+    else
+    {
+        printf("\nEnter element in array : ");
+           scanf("%d",&a[j]);
+           j=j+1;
+    }
+}
+
+void showdata()
+{
+    system("clear");
+    if(j==0)
+    {
+        printf("\nNo elements present in array");
+    }
+    else
+    {
+        printf("Array : ");
+        for(i=0;i<=j;i++)
+        {
+            printf("\n a[%d] = %d",i,a[i]);
+        }
+    }
+}
+
+void insert()
+{
+    system("clear");
+    printf("Enter item to insert : ");
+    scanf("%d",&item);
+    printf("\nEnter location to insert : ");
+    scanf("%d",&loc);
+    for(i=15;i>=loc;i--)
+    {
+        a[i]=a[i-1];
+    }
+}
+
+void delete()
+{
+    system("clear");
+    printf("Enter item to delete : ");
+    scanf("%d",&item);
+    for(i=0;i<10;i++)
+    {
+        if(item==a[i])
+        {
+            loc=i;
+            break;
+        }
+    }
+    if(i==10)
+    {
+        printf("\nitem you wants to delete is not present in array");
+    }
+    else
+    {
+        for(i=loc;i<=j;i++)
+        {
+            a[i]=a[i+1];
+        }
+    }
+    j=j-1;
+}
+
+int main()
+{
+    int opt;
+    while(1)
+    {
+        system("clear");
+        printf("\t\t*********************** MENU ***********************");
+        printf("\n\t\t\t1. Add element in array \n\t\t\t2. Show array \n\t\t\t3. Insertion \n\t\t\t4. Deletion \n\t\t\t5. Exit");
+        printf("\n\t\t\tEnter an option : ");
+        scanf("%d",&opt);
+        if(opt==1)
+        {
+            adddata();
+        }
+        else if(opt==2)
+        {
+            showdata();
+        }
+        else if(opt==3)
+        {
+            delete();
+        }
+        else if(opt==4)
+        {
+            delete();
+        }
+        else if(opt==5)
+        {
+            break;
+        }
+        else
+        {
+            printf("\nInvalid option :( ");
+        }
+    }
+    return 0;
+}
+
+

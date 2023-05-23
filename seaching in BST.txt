@@ -1,0 +1,69 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 10
+int i=0;
+
+struct node
+{
+    int data;
+    struct node *next_r;
+    struct node *next_l;
+};
+
+void searchlist(struct node *);
+void searchlist(struct node *root)
+{
+    int item;
+    printf("\nEnter item to search : ");
+    scanf("%d",&item);
+    while(root!=NULL)
+    {
+        if(item==root->data)
+        {
+            printf("\n!Item found!");
+            break;
+        }
+        else if(item>root->data)
+        {
+            root=root->next_r;
+        }
+        else
+        {
+            root=root->next_l;
+        }
+    }
+    if(root==NULL)
+    {
+        printf("\nItem not found");
+    }
+}
+int main()
+{
+    struct node *root=NULL;
+        struct node *link[10];
+        root=(struct node *)malloc(sizeof(struct node));
+        for(i=0;i<10;i++)
+        {
+            link[i]=NULL;
+            link[i]=(struct node *)malloc(sizeof(struct node));
+        }
+        root->data=-1;
+        root->next_l=link[0];
+        root->next_r=link[MAX/2];
+        printf("Enter data(precondition = in BST values at right side has to be higher then left) : \n");
+        for(i=0;i<MAX/2;i++)
+        {
+            scanf("%d",&link[i]->data);
+            link[i]->next_l=link[i+1];
+        }
+        link[4]->next_l=NULL;
+        for(i=MAX/2;i<MAX;i++)
+        {
+            scanf("%d",&link[i]->data);
+            link[i]->next_r=link[i+1];
+        }
+        link[9]->next_r=NULL;
+
+    searchlist(root);
+    return 0;
+}

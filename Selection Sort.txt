@@ -1,0 +1,30 @@
+//Complexity = O(n^2) for both worst and average case
+#include<stdio.h>
+#define MAX 10
+int a[MAX]={22,55,77,-1,11,88,44,66,33,00};
+int min=0,i=0,temp=0,j=0;
+int main()
+{
+    for(i=0;i<MAX;i++)
+    {
+        min=a[i];
+        start:
+        for(j=i+1;j<MAX;j++)
+        {
+            if(a[i]>a[j])
+            {
+                temp=min;
+                min=a[j];
+                a[j]=temp;
+                goto start;
+            }
+            a[i]=min;
+        }
+    }
+    for(i=0;i<MAX;i++)
+    {
+        printf("%d\n",a[i]);
+    }
+    return 0;
+}
+

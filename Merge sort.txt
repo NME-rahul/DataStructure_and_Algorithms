@@ -1,0 +1,50 @@
+//Merge sort
+//it is use for merge two sorted array with sorting
+
+
+#include<stdio.h>
+#define MAX 10
+int a[MAX]={10,20,30,40,50,60,70,80,90,100};
+int b[MAX]={11,22,32,42,52,62,72,82,92,102};
+int c[MAX*2];
+int nb=0,ptr=0,i,na=0;
+int main()
+{
+    while(na<MAX && nb<MAX)
+    {
+        if(a[na]>b[nb])
+        {
+            c[ptr]=b[nb];
+            ptr=ptr+1;
+            nb=nb+1;
+        }
+        else
+        {
+            c[ptr]=a[na];
+            ptr=ptr+1;
+            na=na+1;
+        }
+    }
+    if(nb==MAX)
+    {
+        for(i=na;i<MAX;i++)
+        {
+            c[ptr]=a[na];
+            ptr=ptr+1;
+        }
+    }
+    else
+    {
+        for(i=nb;i<MAX;i++)
+        {
+            c[ptr]=b[nb];
+            ptr=ptr+1;
+        }
+    }
+    printf("Array after merge sort \n");
+    for(i=0;i<(MAX*2);i++)
+    {
+        printf("%d \n",c[i]);
+    }
+    return 0;
+}

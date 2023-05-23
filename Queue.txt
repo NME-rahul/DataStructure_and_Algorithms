@@ -1,0 +1,84 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 15
+int a[MAX];
+int rear=-1,front=-1,i;
+void delete(int *);
+void insert(int *);
+void show(void);
+int main()
+{
+    int opt,item;
+    while(1)
+    {
+        system("clear");
+        printf("\n\t********* Menu **********");
+        printf("\n\t1. Insert \n\t2. Delete \n\t3. Show \n\t4. Show last delete item\n\t5. Exit");
+        printf("\n\tEnter an option : ");
+        scanf("%d",&opt);
+        switch(opt)
+        {
+            case 1:
+                insert(&item);
+                break;
+            case 2:
+                delete(&item);
+                break;
+            case 3:
+                show();
+                break;
+            case 4:
+                printf("\nlast deleted item : %d",item);
+                break;
+            case 5:
+                goto end;
+            default:
+                printf("\nInvalid option :(");
+        }
+    }
+end:
+    return 0;
+}
+void insert(int *item)
+{
+    printf("\nEnter item to insert : ");
+    scanf("%d",item);
+    if(front==0 && rear==MAX-1)
+    {
+        printf("\nArray is Overflow");
+    }
+    else if(rear==MAX-1 && front>0)
+    {
+        rear=0;
+    }
+    else
+    {
+        rear=rear+1;
+    }
+    a[rear]=*item;
+}
+void delete(int *item)
+{
+    if(front==-1 && rear==-1)
+    {
+        printf("\nArray is Underflow");
+    }
+    else if(front>=MAX-1)
+    {
+        front=0;
+    }
+    else
+    {
+        front=front+1;
+    }
+    *item=a[front];
+}
+void show()
+{
+    printf("\nArray : \n");
+    for(i=0;i<=rear;i++)
+    {
+        printf("%d\n",a[i]);
+    }
+}
+

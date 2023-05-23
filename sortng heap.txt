@@ -1,0 +1,38 @@
+/*
+1. sort all the values as they add in array using heapsort method
+2. calculate the count of root(maximum value) element in tree/array
+*/
+
+#include<iostream>
+
+using namespace std;
+
+int main(){
+ 
+    long int n, root, child;
+
+    cin >> n;
+    
+    long int candles[n];
+    
+    for(long int i = 0; i < n; i++){
+        cin >> candles[i];
+        root = int(i/2); child = i;
+        while(i > 0 && candles[root] < candles[child]){
+            long int temp = candles[root];
+            candles[root] = candles[child];
+            candles[child] = temp;
+            child = root; root = int(root/2);
+        }
+    }
+    
+    long int cnt=1;
+    
+    for(long int i = 1; i < n; i++){
+        if(candles[0] == candles[i])
+            cnt ++;
+    }
+    
+    cout << cnt;
+    return 0;
+}

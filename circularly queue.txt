@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<stdlib.h>
+int arr[10];
+int n=10;
+int rear=-1, front=-1;
+void insert(int item)
+{
+    if((front==0 && rear==n-1) || front == rear + 1)
+    {
+        printf("Overflow\n\n");
+    }
+    if(front==-1)
+    {
+        rear=0; front=0;
+    }
+    else if(rear == n-1 && front!=0)
+    {
+        rear = 0;
+    }
+    else
+    {
+        rear = rear + 1;
+    }
+    arr[rear] = item;
+}
+int delete(void)
+{
+    int item;
+    if(front==-1)
+    {
+        printf("Underflow\n\n");
+    }
+    item = arr[front];
+    if(front == rear)
+    {
+        front = -1; rear = -1;
+    }
+    else if(front == n-1)
+    {
+        front = 0;
+    }
+    else
+    {
+        front = front + 1;
+    }
+    return item;
+}
+int main()
+{
+    printf("1. Remove \n2. Insert \n3. exit\n");
+    short int opt;
+    int item;
+    while(1)
+    {
+        printf("Enter option: ");
+        scanf("%hu",&opt);
+        switch(opt)
+        {
+            case 1:
+                item = delete();
+                printf("removed item: %d\n\n", item);
+                break;
+            case 2:
+                printf("Enter item: ");
+                scanf("%d",&item);
+                printf("\n");
+                insert(item);
+                break;
+            case 3:
+                exit(0);
+            default:
+                printf("invlid option :(\n\n");
+        }
+    }
+    return 0;
+}

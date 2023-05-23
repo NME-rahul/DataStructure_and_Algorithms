@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 10
+struct node
+{
+    int data;
+    struct node *next;
+};
+void printlist(struct node *);
+void deletelist(struct node *,struct node *[]);
+void printlist(struct node *head)
+{
+    printf("\nEntered data : \n");
+    while(head!=NULL)
+    {
+        printf("%d\n",head->data);
+        head=head->next;
+    }
+}
+void deletelist(struct node *head,struct node *link[])
+{
+    int item,i;
+    printf("Enter element to delete : (except 0) ");
+    scanf("%d",&item);
+    for(i=0;i<MAX;i++)
+    {
+        if(item==head->data)
+        {
+            link[i-1]->next=link[i]->next;
+            break;
+        }
+        head=head->next;
+    }
+    if(i==MAX)
+    {
+        printf("\nElement not found!");
+    }
+}
+int main()
+{
+    struct node *head=NULL;
+    struct node *link[MAX];
+    head=(struct node *)malloc(sizeof(struct node));
+    for(int i=0;i<10;i++)
+    {
+        link[i]=NULL;
+        link[i]=(struct node *)malloc(sizeof(struct node));
+    }
+    printf("Enter data : \n");
+    for(int i=0;i<10;i++)
+    {
+        scanf("%d",&link[i]->data);
+        link[i]->next=link[i+1];
+    }
+    head->data=link[0]->data;
+    head->next=link[1];
+    link[9]->next=NULL;
+    deletelist(head,link);
+    printlist(head);
+    return 0;
+}
